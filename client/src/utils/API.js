@@ -5,6 +5,9 @@ export default {
   getBooks: function() {
     return axios.get("/api/books");
   },
+  searchBooks: function(title) {
+    return axios.get("/api/books/" + title);
+  },
   // Gets the book with the given id
   getBook: function(id) {
     return axios.get("/api/books/" + id);

@@ -9,6 +9,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findMany: function(req, res) { // Matches with "/api/books/:title"
+   
+    db.Book
+      .find({title: { $regex: '.*' + req.params.title + '.*' } })
+      .then(dbModel => res.json(dbModel)) 
+      .catch(err => res.status(422).json(err));
+  },
   findById: function(req, res) {
     db.Book
       .findById(req.params.id)
